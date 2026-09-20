@@ -1,0 +1,292 @@
+@charset "utf-8";
+
+/*
+   New Perspectives on HTML5 and CSS3, 7th Edition
+   Tutorial 2
+   Case Problem 4
+
+   Great Lakescape Lodge Style Sheet
+   Author: [Your Name]
+   Date:   2026-09-20
+
+   Filename: lake_styles.css
+*/
+
+/* =====================================================================
+   1. Web Fonts
+   Two web fonts are supplied (Cac Champagne and Dobkin Plain).
+   Each @font-face rule points to both the .woff and .ttf formats so the
+   browser can pick whichever it supports.
+   ===================================================================== */
+@font-face {
+   font-family: "Cac Champagne";
+   src: url("cac_champagne.woff") format("woff"),
+        url("cac_champagne.ttf") format("truetype");
+}
+
+@font-face {
+   font-family: "Dobkin Plain";
+   src: url("DobkinPlain.woff") format("woff"),
+        url("DobkinPlain.ttf") format("truetype");
+}
+
+/* =====================================================================
+   2. Page Background, Body Text and Typography
+   Background/text colours mix hex colour values with colour names.
+   ===================================================================== */
+html {
+   background-color: #211a2e;          /* deep purple-black (hex value) */
+}
+
+body {
+   background-color: #211a2e;          /* page background (hex value)    */
+   color: #dcd3ea;                     /* body text (hex value)          */
+   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+   font-size: 1em;
+   line-height: 1.55;
+}
+
+/* ---- Headings use the Cac Champagne web font ---------------------- */
+h1 {
+   font-family: "Cac Champagne", cursive;
+   font-size: 2.6em;
+   font-weight: normal;
+   color: #cfb1ec;
+   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);   /* semi-transparent shadow */
+   margin: 0.2em 0 0.15em 0;
+   letter-spacing: 0.05em;
+}
+
+h2 {
+   font-family: "Dobkin Plain", cursive;
+   font-weight: normal;
+   color: #e0c6f5;
+   margin: 0.4em 0 0.2em 0;
+}
+
+/* ---- Main column paragraphs --------------------------------------- */
+section#leftcol p {
+   color: #d3c8e0;                     /* text colour (hex value) */
+   margin: 0.5em 0;
+   text-align: justify;
+}
+
+/* Emphasised lodge name inside the welcome text */
+section#leftcol p em {
+   color: #f0e2ff;
+   font-style: italic;
+}
+
+/* ---- Links --------------------------------------------------------- */
+a {
+   color: #d9b8f2;                     /* link text colour */
+   text-decoration: underline;
+}
+
+a:hover {
+   color: White;                       /* colour name used here */
+   text-decoration: none;
+}
+
+a:focus {
+   color: White;
+   outline: 1px dotted #cfa8f0;
+}
+
+/* =====================================================================
+   3. Header Navigation Bar
+   Grid layout (Task 3.j): the six nav links are laid out in one row of
+   equal-width grid columns.  Child selectors target each level.
+   ===================================================================== */
+header {
+   background-color: #181221;          /* header background (hex value) */
+   border-bottom: 1px solid #4a3a63;
+}
+
+/* Nested + child selectors: nav > ul > li > a */
+body > header > nav > ul {
+   display: grid;                      /* GRID layout                 */
+   grid-template-columns: repeat(6, 1fr);
+   list-style-type: none;              /* remove default list markers  */
+   margin: 0;
+   padding: 0;
+}
+
+header > nav > ul > li {
+   text-align: center;
+   border-right: 1px solid rgba(255, 255, 255, 0.12);  /* subtle divider */
+}
+
+header > nav > ul > li:last-child {
+   border-right: 0;
+}
+
+body > header > nav > ul > li > a {
+   display: block;
+   padding: 10px 4px;                  /* padding around nav text */
+   color: White;                       /* text colour (colour name) */
+   text-decoration: none;
+   font-size: 1.02em;
+   letter-spacing: 0.04em;
+   background-color: rgb(96, 63, 138); /* nav bar background (rgb value) */
+}
+
+header > nav a:hover {
+   background-color: #7b55ad;          /* hover colour (hex value) */
+   color: White;
+}
+
+/* =====================================================================
+   4. Left Column - Notes & Upcoming Events Panels
+   Semi-transparent panel backgrounds (Task 3.d) plus padding/margin
+   control (Task 3.h).
+   ===================================================================== */
+section#leftcol aside {
+   background-color: rgba(146, 106, 199, 0.22);  /* semi-transparent colour */
+   border: 1px solid rgba(146, 106, 199, 0.45);
+   border-radius: 12px;
+   padding: 10px 16px;                 /* padding space around content */
+   margin-bottom: 22px;                /* margin space below the panel */
+}
+
+section#leftcol aside h1 {
+   font-size: 1.9em;
+   color: #e6cdfa;
+   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+   padding-bottom: 4px;
+}
+
+/* ---- List styling inside the Notes panel -------------------------- */
+section#leftcol aside ul {
+   list-style-type: square;            /* change the list marker shape */
+   margin: 8px 0 10px 0;
+   padding-left: 26px;
+}
+
+section#leftcol aside ul li {
+   margin: 5px 0;                      /* spacing between list items */
+   font-size: 0.92em;
+}
+
+section#leftcol aside ul li::marker {  /* colour the list markers */
+   color: #cfa8f0;
+}
+
+/* ---- Events panel sub-headings ------------------------------------ */
+section#leftcol aside h2 {
+   font-size: 1.35em;
+   margin-top: 10px;
+   color: #ecd9ff;
+}
+
+/* =====================================================================
+   5. Right Column - Sidebar Navigation
+   id-based selectors (Task 3.e), custom list markers built with the
+   ::before pseudo-element (Task 3.g / 3.i).
+   ===================================================================== */
+#rightcol {
+   background-color: rgba(20, 14, 30, 0.35);  /* semi-transparent panel */
+   border-left: 1px solid #4a3a63;
+   padding: 12px 16px;                 /* padding inside the sidebar */
+}
+
+#rightcol nav h2 {
+   font-family: "Dobkin Plain", cursive;
+   font-size: 1.7em;
+   color: DarkOrchid;                  /* text colour (colour name) */
+   margin: 14px 0 6px 0;
+}
+
+#rightcol nav h2:first-child {
+   margin-top: 0;
+}
+
+#rightcol nav ul {
+   list-style-type: none;              /* remove the default markers */
+   margin: 0 0 18px 0;
+   padding: 0;
+}
+
+/* Generated bullet markers via the ::before pseudo-element */
+#rightcol nav ul li::before {
+   content: "\2022";                   /* generates a bullet in the page */
+   color: #cfa8f0;
+   font-size: 1.1em;
+   margin-right: 8px;
+}
+
+#rightcol nav ul li {
+   margin: 6px 0;
+   font-size: 0.9em;
+}
+
+#rightcol nav a {
+   text-decoration: none;
+   color: #cbb8de;
+}
+
+#rightcol nav a:hover {
+   color: White;
+   background-color: rgba(123, 85, 173, 0.4);   /* semi-transparent hover */
+}
+
+/* ---- Guest quotation ----------------------------------------------- */
+#rightcol blockquote {
+   background-color: rgba(146, 106, 199, 0.16);  /* semi-transparent colour */
+   border-left: 4px solid #a97fd0;
+   padding: 14px 18px;                 /* padding around the quote */
+   margin: 24px 0 0 0;                 /* margin above the quote */
+   font-style: italic;
+   font-size: 0.92em;
+   line-height: 1.6;
+   color: #cdc0de;
+}
+
+#rightcol blockquote:hover {           /* pseudo-class selector */
+   background-color: rgba(146, 106, 199, 0.3);
+}
+
+/* Generated quotation marks around the guest review (Task 3.i) */
+#rightcol blockquote::before {
+   content: "\201C";                   /* left double quotation mark */
+   font-family: "Cac Champagne", cursive;
+   font-size: 2.4em;
+   color: #cfa8f0;
+   float: left;
+   margin-right: 6px;
+   line-height: 0.8;
+}
+
+#rightcol blockquote::after {
+   content: "\201D";                   /* right double quotation mark */
+   font-family: "Cac Champagne", cursive;
+   font-size: 2.4em;
+   color: #cfa8f0;
+   line-height: 0.8;
+   margin-left: 4px;
+   vertical-align: top;
+}
+
+/* =====================================================================
+   6. Footer
+   Flexbox layout (Task 3.j): the footer details are centred and allowed
+   to wrap onto new lines on narrow screens.
+   ===================================================================== */
+footer {
+   display: flex;                      /* FLEXBOX layout */
+   flex-wrap: wrap;
+   justify-content: center;
+   column-gap: 8px;
+   margin-top: 26px;                   /* margin space above footer */
+   padding: 16px 0 20px 0;             /* padding inside footer */
+   border-top: 1px solid #4a3a63;
+   color: #a89cc0;                     /* footer text colour (hex value) */
+   font-size: 0.85em;
+   letter-spacing: 0.03em;
+}
+
+footer em {
+   font-family: "Cac Champagne", cursive;
+   font-size: 1.5em;
+   color: #d9b8f2;
+}
