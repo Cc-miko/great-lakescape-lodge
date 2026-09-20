@@ -29,4 +29,4 @@ demonstrating CSS3 colour scheme & typography techniques:
 
 ## Live preview
 
-https://<username>.github.io/great-lakescape-lodge/
+https://cc-miko.github.io/great-lakescape-lodge/
